@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-url:                   https://domain.tld
+url:                   http://paolocarta.me
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -19,18 +19,16 @@ baseurl:               ''
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Hydejack
+title:                 Paolo Carta
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  "Best Jekyll Theme by a Mile".
-  **Hydejack** is your presence on the web, featuring a blog, portfolio, and resume.
+  "Software Architect and Developer".
 
 # A shorter description for the sidebar.
 tagline:               >
-  "Best Jekyll Theme by a Mile".
-  Open `_config.yml` to edit this text.
+  "Software Architect and Developer". 
 
 # A list of keywords for your blog
 keywords:              []
@@ -42,10 +40,10 @@ logo:                  /assets/icons/icon.png
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
-  name:                <firstname> <lastname>
-  email:               <mail@domain.tld>
+  name:                Paolo Carta
+  email:               paolo@solidarchitectures.com
   # Used by `jekyll-seo-tag`:
-  # twitter:             <username>
+  twitter:             cl4mer
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             © 2018. All rights reserved.
@@ -261,8 +259,8 @@ plugins:
 #   yandex:              <verification-id>
 
 # Used for Twitter cards
-# twitter:
-#   username:            <shortname>
+twitter:
+  username:            cl4mer
 
 # Used for Facebook open graph
 # facebook:
@@ -271,11 +269,11 @@ plugins:
 #   admins:              <id>
 
 # Used on index and about sites
-# social:
-#   name:                <firstname> <lastname>
-#   links:
-#     - https://twitter.com/<username>
-#     - https://github.com/<username>
+social:
+  name:                Paolo Carta
+  links:
+    - https://twitter.com/cl4mer
+    - https://github.com/paolocarta
 
 
 # Other Plugins
