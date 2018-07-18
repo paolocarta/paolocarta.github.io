@@ -8,14 +8,16 @@
 NAME := paolocarta.me
 BUILD_TOOL := bundle
 
-# BUILDING
-
 build :		## Build the application excluding tests
 	$(BUILD_TOOL) exec jekyll serve
 
-# TESTING
+install-jekyll :	# Install Jekyll and Bundler gems through RubyGems
+	gem install jekyll bundler
 
-# RUNNING
+create-website :	# Create a new Jekyll site at .
+	jekyll new . --force
+
+
 
 
 
