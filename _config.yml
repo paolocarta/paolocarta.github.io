@@ -68,7 +68,7 @@ paginate_path:         /blog/page-:num/
 # ========================================================================================
 
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
+accent_image:          /assets/img/flowers.jpg
 accent_color:          rgb(79,177,186)
 
 # This is used for the `theme-color` meta tag,
@@ -268,12 +268,13 @@ twitter:
 #   publisher:           <id>
 #   admins:              <id>
 
+
 # Used on index and about sites
 social:
-  name:                Paolo Carta
+  name:                twitter
   links:
     - https://twitter.com/cl4mer
-    - https://github.com/paolocarta
+    # - https://github.com/paolocarta
 
 
 # Other Plugins
