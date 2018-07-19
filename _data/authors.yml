@@ -2,8 +2,8 @@
 # Must be the same as `author` in `_config.yml`.
 # Change `author1` to your shortname.
 author1:
-  name:              <firstname> <lastname>
-  email:             <mail@domain.tld>
+  name:              Paolo Carta
+  email:             paolo@solidarchitectures.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
@@ -26,9 +26,9 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    twitter:         <username>
-    github:          <username>
-    # email:           <mail@domain.tld>
+    twitter:         cl4mer
+    github:          paolocarta
+    email:           paolo@solidarchitectures.com
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>
@@ -57,7 +57,7 @@ author1:
     # npm:             <username>
     # hackernews:      <username>
     # trello:          <firstnamelastname>
-    # linkedin:        <firstname-lastname-string>
+    linkedin:        paolo-carta
     # xing:            <firstname_lastname_counter>
     # blogger:         <number>
     # delicious:       <username>
@@ -65,20 +65,20 @@ author1:
     # paypal:          <username>
     # download:        <url>
 
-# Another author (optional)
-author2:
-  name:              <firtname> <lastname>
-  email:             <mail@domain.tld>
-  about:             |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+# # Another author (optional)
+# author2:
+#   name:              <firtname> <lastname>
+#   email:             <mail@domain.tld>
+#   about:             |
+#     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+#     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+#     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-    Open `_data/authors.yml` to edit this text.
-  picture:           https://placehold.it/128x128
-  twitter:           <username>
-  github:            <username>
-  accent_color:      '#268bd2'
-  accent_image:
-    background:      '#202020'
-    overlay:         false
+#     Open `_data/authors.yml` to edit this text.
+#   picture:           https://placehold.it/128x128
+#   twitter:           <username>
+#   github:            <username>
+#   accent_color:      '#268bd2'
+#   accent_image:
+#     background:      '#202020'
+#     overlay:         false
