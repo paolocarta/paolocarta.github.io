@@ -1,6 +1,6 @@
 ---
 layout: projects
-title: Projects
+title: Projects (Work in progress)
 show_collection: projects
 description: >
   This is a demo of the `projects` layout.
