@@ -6,13 +6,13 @@
 # VARIABLES
 
 NAME := paolocarta.me
-BUILD_TOOL := bundle
+BUILD_TOOL := bundle exec
 
 build :	# The current folder will be generated into ./_site
-	jekyll build
+	$(BUILD_TOOL) jekyll build 
 
 serve :		## Build the application excluding tests
-	$(BUILD_TOOL) exec jekyll serve --livereload --incremental
+	$(BUILD_TOOL) jekyll serve --livereload 
 
 install-jekyll :	# Install Jekyll and Bundler gems through RubyGems
 	gem install jekyll bundler

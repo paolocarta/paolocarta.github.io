@@ -4,15 +4,5 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Born and grown in the beautiful Sardinia in Italy, I moved to Zurich to complete my studies at the ETH (Swiss Federal Institute of Technology). After working on delay tolerant networks with Android devices I focused more on Web development and scalable and resilient software architectures on the cloud. Currently working as a Freelancer at Interdiscount, the market leader for electronics in Switzerland.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
