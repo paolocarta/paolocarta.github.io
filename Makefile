@@ -12,7 +12,7 @@ build :	# The current folder will be generated into ./_site
 	jekyll build
 
 serve :		## Build the application excluding tests
-	$(BUILD_TOOL) exec jekyll serve --livereload
+	$(BUILD_TOOL) exec jekyll serve --livereload --incremental
 
 install-jekyll :	# Install Jekyll and Bundler gems through RubyGems
 	gem install jekyll bundler

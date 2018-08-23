@@ -24,8 +24,8 @@
     <a href="{{ project.url | relative_url }}" class="flip-title" property="mainEntityOfPage">{{ project.title }}</a>
   </h3>
   {% if project.caption %}
-    <legend class="project-card-text fine faded" property="disambiguatingDescription">
+    <p class="project-card-text fine" property="disambiguatingDescription">
       {{ project.caption | markdownify | replace:'<p>','' | replace:'</p>','' }}
-    </legend>
+    </p>
   {% endif %}
 </article>

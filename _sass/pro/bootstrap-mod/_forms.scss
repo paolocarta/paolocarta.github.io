@@ -115,6 +115,7 @@ select.form-control {
 // text (without any border, background color, focus indicator)
 
 .form-control-plaintext {
+  color: $input-color;
   display: block;
   width: 100%;
   padding-top: $input-padding-y;

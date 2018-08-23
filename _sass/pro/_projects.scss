@@ -9,7 +9,7 @@
     flex-wrap: wrap;
 
     &::after {
-      @include clearfix();
+      @extend .clearfix;
     }
   }
 
@@ -37,13 +37,14 @@
   }
 
   .project-card {
+    @extend .color-transition;
     width: 100%;
-    background: $body-bg;
+    color: var(--gray-text);
+    background-color: var(--gray-bg);
     padding-bottom: .75rem;
     margin-bottom: 1.5rem;
     overflow: hidden;
-    box-shadow: .125rem .125rem .5rem rgba(0, 0, 0, 0.1);
-    border: 1px solid $border-color;
+    box-shadow: .125rem .125rem 1rem rgba(0, 0, 0, 0.2);
     contain: content;
 
     page-break-inside: avoid;
@@ -51,7 +52,7 @@
     > a {
       .project-card-img {
         margin-bottom: 0;
-        border-bottom: 1px solid $border-color;
+        // border-bottom: 1px solid var(--border-color);
         position: relative;
         img { transition: transform 500ms; }
       }

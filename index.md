@@ -1,8 +1,9 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: welcome
-title: Welcome
 cover: true
+image: /assets/img/hydejack-8.png
+hide_description: true
 ---
+
+# Thank You
+Thank you for visiting my Website! 🎉
+

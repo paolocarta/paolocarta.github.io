@@ -21,7 +21,7 @@ import { merge } from "rxjs";
 import { filter } from "rxjs/operators";
 
 import { setupFLIPTitle } from "./title";
-import { setupFLIPProject } from "./project";
+import { setupFLIPProject } from "./pro/project";
 
 const FLIP_TYPES = ["title", "projects"];
 

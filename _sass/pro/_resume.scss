@@ -1,6 +1,10 @@
 // Copyright (c) 2017 Florian Klampfer <https://qwtel.com/>
 
 .layout-resume {
+  .clearafter::after {
+    @extend .clearfix;
+  }
+
   h1 {
     display: inline-block;
     margin-bottom: .25rem;
@@ -22,15 +26,15 @@
   .h4 {
     margin-top: 0;
     font-family: $font-family!important;
-    font-weight: $font-weight-bold!important;
+    font-weight: var(--font-weight-bold)!important;
   }
 
   .bc {
-    color: $body-color;
+    color: var(--body-color);
   }
 
   .bold {
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
   }
 
   .tags {
@@ -41,11 +45,12 @@
   }
 
   .tag {
-    border: 1px solid $border-color;
+    @extend .color-transition;
+    border: 1px solid var(--border-color);
     display: inline-block;
     margin: .25rem .125rem;
     padding: .125rem .25rem;
-    color: $gray;
+    color: var(--text-muted);
     line-height: 1.4;
   }
 
@@ -54,8 +59,9 @@
   }
 
   .symbol {
+    @extend .color-transition;
     float: right;
-    color: #ddd;
+    color: var(--menu-text);
     margin-top: 4px;
     margin-left: .5rem;
   }
@@ -116,7 +122,7 @@
     margin-left: -$pad;
 
     &::after {
-      @include clearfix();
+      @extend .clearfix;
     }
 
     .message {
