@@ -1,6 +1,6 @@
 ---
 cover: true
-image: /assets/img/hydejack-8.png
+# image: /assets/img/hydejack-8.png
 hide_description: true
 ---
 
