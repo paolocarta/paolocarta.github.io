@@ -5,5 +5,5 @@ hide_description: true
 ---
 
 # Thank You
-Thank you for visiting my Website! 🎉
+Welcome to my Website! 🎉
 
