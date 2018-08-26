@@ -6,7 +6,7 @@ image: /assets/img/talks/workshop-tage-ch.png
 screenshot: /assets/img/talks/workshop-tage-ch.png
 links:
   - title: Website
-    url: https://workshoptage.ch/workshops/2018/end-to-end-continuous-delivery-on-kubernetes
+    url: http://bit.ly/workshop-ci-cd-jx
 caption: Workshop 
 description: >
   This Workshop is focused on open source solutions for CI/CD on Kubernetes.
