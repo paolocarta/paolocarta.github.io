@@ -214,8 +214,8 @@ collections:
     output:            true
   
   talks:
-    permalink:        /talks/:path/
-    output:           true
+    permalink:         /talks/:path/
+    output:            true
 
 
 # File inclusion/exclusion
