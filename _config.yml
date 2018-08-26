@@ -105,6 +105,11 @@ defaults:
       seo:
         type:          WebPage
   - scope:
+      type:            talks
+    values:
+      seo:
+        type:          WebPage
+  - scope:
       type:            featured_categories
     values:
       seo:
@@ -207,6 +212,10 @@ collections:
   projects:
     permalink:         /projects/:path/
     output:            true
+  
+  talks:
+    permalink:        /talks/:path/
+    output:           true
 
 
 # File inclusion/exclusion
