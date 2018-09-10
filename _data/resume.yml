@@ -29,7 +29,7 @@ work:
     position: "Software Architect and Developer"
     website: "https://paolocarta.me"
     startDate: "2018-05-01"
-    endDate: "present"
+    # endDate: "present"
     # summary: >
     #   Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has
     #   consistently fielded high Weisman Scores™ that are not merely competitive,
