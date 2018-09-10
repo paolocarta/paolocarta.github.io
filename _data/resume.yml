@@ -25,6 +25,20 @@ basics:
       username: "Paolo Carta"
       url: "https://www.linkedin.com/in/paolo-carta/"
 work:
+  - company: "PC Solid Consulting"
+    position: "Software Architect and Developer"
+    website: "https://paolocarta.me"
+    startDate: "2018-05-01"
+    endDate: "present"
+    # summary: >
+    #   Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has
+    #   consistently fielded high Weisman Scores™ that are not merely competitive,
+    #   but approach the theoretical limit of lossless compression.
+    highlights:
+      - Leading the new Microservices based platform at Interdiscount
+      - Presenting at local meetups and conferences
+      - Conducting workshops
+      - Kubernetes Certification
   - company: "foryouandyourcustomers"
     position: "Software Architect and Developer"
     website: "https://foryouandyourcustomers.com"
