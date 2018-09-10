@@ -7,7 +7,7 @@ screenshot: /assets/img/projects/logo-interdiscount.png
 links:
   - title: Website
     url: https://interdiscount.ch
-caption: New E-Commerce Portal
+caption: Hybris - ReactJs based E-Shop
 description: >
   Interdiscount is the leading Electronics retailer in Switzerland.
 accent_color: '#4fb1ba'
