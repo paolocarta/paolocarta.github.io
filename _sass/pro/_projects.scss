@@ -54,10 +54,7 @@
         margin-bottom: 0;
         // border-bottom: 1px solid var(--border-color);
         position: relative;
-        img {
-          display: block;
-          transition: transform 500ms;
-        }
+        img { transition: transform 500ms; }
       }
 
       &:hover, &:focus {

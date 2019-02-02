@@ -7,8 +7,6 @@ screenshot: /assets/img/talks/jdd-poland-2018.png
 links:
   - title: Website
     url: http://bit.ly/jdd-conference-jx
-  - title: Video
-    url: http://bit.ly/video-jdd-jx
 caption: Talk 
 description: >
   In this talk I show Jenkins-X a new innovative open source ecosystem for CI/CD on Kubernetes.
