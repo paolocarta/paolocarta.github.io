@@ -162,6 +162,10 @@
       page-break-inside: avoid;
       break-inside: avoid-page;
     }
+    .avatar {
+      width: 8.5rem;
+      height: 8.5rem;
+    }
   }
 
   @media print and (min-width: 5.247in) {

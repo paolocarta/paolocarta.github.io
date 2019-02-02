@@ -6,11 +6,11 @@ layout: about
 {% assign strings = site.data.strings %}
 
 {% if content contains "<!--projects-->" %}
-{% capture projets_x %}
+{% capture projets_html %}
 {% if page.selected_projects %}
   <div class="columns mt2">
-  {% for project_path in page.selected_projects %}
-    {% assign project = site.projects | where:"path",project_path | first %}
+  {% assign projects_coll = site.projects | where_exp:"project", "page.selected_projects contains project.path" %}
+  {% for project in projects_coll %}
     {% assign featured = page.featured | default:project.featured | default:page.big_project | default:project.big_project %}
 
     <div class="column {% if featured %}column-1{% else %}column-1-2{% endif %}">
@@ -48,15 +48,15 @@ layout: about
   {% endif  %}
 {% endif %}
 {% endcapture %}
-{% assign content = content | replace:"<!--projects-->", projets_x %}
+{% assign content = content | replace:"<!--projects-->", projets_html %}
 {% endif %}
 
 {% if content contains "<!--posts-->" %}
-{% capture posts_x %}
+{% capture posts_html %}
 {% if page.selected_posts %}
   <ul class="related-posts mt2">
-    {% for post_path in page.selected_posts %}
-      {% assign post = site.posts | where:"path", post_path | first %}
+    {% assign posts_coll = site.posts | where_exp:"post", "page.selected_posts contains post.path" %}
+    {% for post in posts_coll %}
       {% if post %}
         {% include components/post-list-item.html post=post %}
       {% else %}
@@ -85,7 +85,7 @@ layout: about
   {% endif  %}
 {% endif %}
 {% endcapture %}
-{% assign content = content | replace:"<!--posts-->", posts_x %}
+{% assign content = content | replace:"<!--posts-->", posts_html %}
 {% endif %}
 
 {{ content }}
