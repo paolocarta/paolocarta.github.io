@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="container page-container">
+  <header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Content }}<div class="page-description">{{ . }}</div>{{ end }}
+  </header>
+
+  {{ if .Pages }}
+  <div class="post-list">
+    {{ range .Pages }}
+    <article class="post-card">
+      <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <p class="post-summary">{{ .Summary }}</p>
+      {{ with .Params.tags }}
+      <ul class="tag-list">
+        {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
+      <a class="link-arrow" href="{{ .Permalink }}">Read →</a>
+    </article>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p class="empty-state">No posts yet. Check back soon.</p>
+  {{ end }}
+</div>
+{{ end }}

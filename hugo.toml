@@ -1,0 +1,49 @@
+baseURL = "https://paolocarta.com/"
+languageCode = "en-us"
+title = "Paolo Carta"
+enableRobotsTXT = true
+paginate = 10
+
+[params]
+  author      = "Paolo Carta"
+  description = "Freelance Kubernetes Consultant & DevOps Engineer helping teams build reliable, scalable infrastructure."
+  email       = "hello@paolocarta.com"
+  tagline     = "Kubernetes Consultant & DevOps Engineer"
+  location    = "Remote"
+  linkedin    = "https://linkedin.com/in/paolocarta"
+  github      = "https://github.com/paolocarta"
+
+[menu]
+  [[menu.main]]
+    name       = "Home"
+    url        = "/"
+    weight     = 10
+    identifier = "home"
+  [[menu.main]]
+    name       = "About"
+    url        = "/about/"
+    weight     = 20
+    identifier = "about"
+  [[menu.main]]
+    name       = "Services"
+    url        = "/services/"
+    weight     = 30
+    identifier = "services"
+  [[menu.main]]
+    name       = "Blog"
+    url        = "/blog/"
+    weight     = 40
+    identifier = "blog"
+  [[menu.main]]
+    name       = "Contact"
+    url        = "/contact/"
+    weight     = 50
+    identifier = "contact"
+
+[markup]
+  [markup.highlight]
+    style    = "github-dark"
+    lineNos  = false
+    noClasses = true
+  [markup.goldmark.renderer]
+    unsafe = true

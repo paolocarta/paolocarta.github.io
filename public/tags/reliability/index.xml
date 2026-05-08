@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reliability on Paolo Carta</title>
+    <link>http://localhost:1313/tags/reliability/</link>
+    <description>Recent content in Reliability on Paolo Carta</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/reliability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Kubernetes Production Readiness Checklist</title>
+      <link>http://localhost:1313/blog/kubernetes-production-checklist/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/kubernetes-production-checklist/</guid>
+      <description>&lt;p&gt;Declaring a cluster &amp;ldquo;production-ready&amp;rdquo; is often more of a vibe than a rigorous process. After running this exercise with a dozen or so clients, I&amp;rsquo;ve converged on a checklist that covers the things that actually bite people — not an exhaustive spec, but a focused set of high-signal checks.&lt;/p&gt;&#xA;&lt;h2 id=&#34;resource-requests-and-limits&#34;&gt;Resource requests and limits&lt;/h2&gt;&#xA;&lt;p&gt;Every container should have CPU and memory &lt;strong&gt;requests&lt;/strong&gt; set. Limits are more nuanced — memory limits are important to prevent OOMKills cascading, but CPU limits can cause unnecessary throttling if set too low. At minimum: set requests on everything, set memory limits with some headroom, and measure actual usage before tuning CPU limits.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

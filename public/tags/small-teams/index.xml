@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Small-Teams on Paolo Carta</title>
+    <link>http://localhost:1313/tags/small-teams/</link>
+    <description>Recent content in Small-Teams on Paolo Carta</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/small-teams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DevOps on Small Teams: What Actually Matters</title>
+      <link>http://localhost:1313/blog/devops-small-teams/</link>
+      <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/devops-small-teams/</guid>
+      <description>&lt;p&gt;A two-person startup has different DevOps needs than a 200-person engineering org, and treating them the same is a reliable way to waste a lot of time. After working with teams at various stages, here&amp;rsquo;s what I&amp;rsquo;ve found actually moves the needle when you&amp;rsquo;re small.&lt;/p&gt;&#xA;&lt;h2 id=&#34;invest-early-in-fast-reliable-ci&#34;&gt;Invest early in fast, reliable CI&lt;/h2&gt;&#xA;&lt;p&gt;Every hour of flaky CI is an hour of developer attention tax paid daily. A test suite that takes 20 minutes and occasionally fails for no reason will destroy your team&amp;rsquo;s confidence in the pipeline and, eventually, in tests themselves.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

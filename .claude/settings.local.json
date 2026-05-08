@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:paolocarta.com)",
+      "Bash(brew install hugo)",
+      "Bash(hugo new site . --force)",
+      "Bash(hugo build)"
+    ]
+  }
+}

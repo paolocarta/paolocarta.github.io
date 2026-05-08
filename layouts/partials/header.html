@@ -1,0 +1,15 @@
+<header class="site-header">
+  <nav class="nav container">
+    <a class="nav-logo" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      {{ range .Site.Menus.main }}
+      <li>
+        <a class="nav-link{{ if eq $.RelPermalink .URL }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Kubernetes Production Readiness Checklist | Paolo Carta</title>
+<meta name="description" content="The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.">
+<meta name="author" content="Paolo Carta">
+<link rel="canonical" href="http://localhost:1313/blog/kubernetes-production-checklist/">
+<link rel="stylesheet" href="/css/style.css">
+
+<meta property="og:title" content="A Kubernetes Production Readiness Checklist">
+<meta property="og:description" content="The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.">
+<meta property="og:url" content="http://localhost:1313/blog/kubernetes-production-checklist/">
+<meta property="og:type" content="article">
+
+</head>
+<body>
+  <header class="site-header">
+  <nav class="nav container">
+    <a class="nav-logo" href="/">Paolo Carta</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      
+      <li>
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      <li>
+        <a class="nav-link" href="/about/">About</a>
+      </li>
+      
+      <li>
+        <a class="nav-link" href="/services/">Services</a>
+      </li>
+      
+      <li>
+        <a class="nav-link" href="/blog/">Blog</a>
+      </li>
+      
+      <li>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+
+  <main class="main-content">
+    
+<div class="container page-container">
+  <article class="single-article">
+    <header class="article-header">
+      <h1 class="article-title">A Kubernetes Production Readiness Checklist</h1>
+      
+      <time class="article-date" datetime="2026-01-15">
+        January 15, 2026
+      </time>
+      
+      
+      <ul class="tag-list">
+        
+        <li class="tag">kubernetes</li>
+        
+        <li class="tag">production</li>
+        
+        <li class="tag">reliability</li>
+        
+      </ul>
+      
+    </header>
+    <div class="article-body">
+      <p>Declaring a cluster &ldquo;production-ready&rdquo; is often more of a vibe than a rigorous process. After running this exercise with a dozen or so clients, I&rsquo;ve converged on a checklist that covers the things that actually bite people — not an exhaustive spec, but a focused set of high-signal checks.</p>
+<h2 id="resource-requests-and-limits">Resource requests and limits</h2>
+<p>Every container should have CPU and memory <strong>requests</strong> set. Limits are more nuanced — memory limits are important to prevent OOMKills cascading, but CPU limits can cause unnecessary throttling if set too low. At minimum: set requests on everything, set memory limits with some headroom, and measure actual usage before tuning CPU limits.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">resources</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">requests</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">cpu</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;100m&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">memory</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;128Mi&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">limits</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">memory</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;256Mi&#34;</span><span style="color:#6e7681">
+</span></span></span></code></pre></div><h2 id="pod-disruption-budgets">Pod Disruption Budgets</h2>
+<p>PDBs prevent too many replicas of a service from being unavailable simultaneously during voluntary disruptions (node drains, rolling upgrades). A cluster with no PDBs will happily drain all nodes of a deployment at once.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">policy/v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">PodDisruptionBudget</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">my-app-pdb</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">spec</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">minAvailable</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">selector</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">matchLabels</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">app</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">my-app</span><span style="color:#6e7681">
+</span></span></span></code></pre></div><h2 id="health-probes">Health probes</h2>
+<p><code>readinessProbe</code> tells Kubernetes when a pod is ready to receive traffic. <code>livenessProbe</code> tells it when to restart a pod. Using liveness probes incorrectly (too aggressive timeouts, probing too early) is one of the most common causes of flapping deployments.</p>
+<p>A safe starting point: set <code>readinessProbe</code> on every pod, and only add <code>livenessProbe</code> if you have a specific need — and test the failure behaviour before going to production.</p>
+<h2 id="node-autoscaling">Node autoscaling</h2>
+<p>Cluster Autoscaler or Karpenter should be configured to handle burst demand and scheduled scale-down. Check that your node groups have appropriate taints and labels, and that your pods have matching tolerations and affinity rules.</p>
+<h2 id="rbac-and-network-policies">RBAC and network policies</h2>
+<p>Default deny network policies between namespaces, and service accounts with least-privilege RBAC bindings. These are easy to add early and painful to retrofit.</p>
+<h2 id="observability">Observability</h2>
+<p>At a minimum: Prometheus scraping cluster metrics, Grafana dashboards for node CPU/memory/disk, and alerts for pod crashlooping and node pressure. Centralised log aggregation (Loki, CloudWatch, Elasticsearch) makes incident response orders of magnitude faster.</p>
+<hr>
+<p>This is the short version. Drop me a line if you want to walk through any of these in the context of your specific setup.</p>
+
+    </div>
+  </article>
+</div>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 Paolo Carta. All rights reserved.</p>
+    <ul class="footer-links">
+      
+      <li><a href="https://linkedin.com/in/paolocarta" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      
+      
+      <li><a href="https://github.com/paolocarta" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      
+      
+      <li><a href="mailto:hello@paolocarta.com">Email</a></li>
+      
+    </ul>
+  </div>
+</footer>
+
+  <script src="/js/nav.js"></script>
+</body>
+</html>

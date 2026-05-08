@@ -1,0 +1,79 @@
+{{ define "main" }}
+
+{{/* Hero */}}
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">Hi, I'm</p>
+    <h1 class="hero-name">{{ .Site.Params.author }}</h1>
+    <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+    <p class="hero-description">{{ .Site.Params.description }}</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="{{ "/services/" | relURL }}">View Services</a>
+      <a class="btn btn-secondary" href="mailto:{{ .Site.Params.email }}">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+{{/* About teaser */}}
+<section class="section section-about-teaser">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    {{ with .Site.GetPage "/about" }}
+    <p class="teaser-text">{{ .Summary }}</p>
+    <a class="link-arrow" href="{{ .Permalink }}">Read more →</a>
+    {{ end }}
+  </div>
+</section>
+
+{{/* Services teaser */}}
+<section class="section section-services-teaser bg-card">
+  <div class="container">
+    <h2 class="section-title">What I Do</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Kubernetes Consulting</h3>
+        <p>Cluster design, migration, and optimisation for production workloads.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>DevOps Engineering</h3>
+        <p>CI/CD pipelines, GitOps workflows, and infrastructure automation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>Platform Engineering</h3>
+        <p>Internal developer platforms and self-service infrastructure tooling.</p>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a class="link-arrow" href="{{ "/services/" | relURL }}">All services →</a>
+    </div>
+  </div>
+</section>
+
+{{/* Recent blog posts */}}
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ $recent := first 3 $posts }}
+{{ if $recent }}
+<section class="section section-blog-teaser">
+  <div class="container">
+    <h2 class="section-title">Latest Posts</h2>
+    <div class="post-list">
+      {{ range $recent }}
+      <article class="post-card">
+        <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <h3 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <p class="post-summary">{{ .Summary }}</p>
+        <a class="link-arrow" href="{{ .Permalink }}">Read →</a>
+      </article>
+      {{ end }}
+    </div>
+    <div class="section-cta">
+      <a class="link-arrow" href="{{ "/blog/" | relURL }}">All posts →</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}
