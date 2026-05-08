@@ -324,6 +324,87 @@ ul { list-style: none; }
 }
 
 /* =============================================
+   Talks & Community section
+   ============================================= */
+.talks-intro {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.talks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.talk-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.talk-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.talk-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-hover);
+}
+.talk-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.talk-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.38);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.talk-card:hover .talk-play { opacity: 1; }
+
+.talk-meta {
+  padding: 0.875rem 1rem 1rem;
+  flex: 1;
+}
+
+.talk-conf {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.talk-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* =============================================
    Course section
    ============================================= */
 .course-card {
@@ -630,5 +711,6 @@ ul { list-style: none; }
   .btn { width: 100%; text-align: center; }
   .services-cta { flex-direction: column; align-items: flex-start; }
   .course-card { flex-direction: column; }
+  .talks-grid { grid-template-columns: 1fr; }
   .footer-inner { height: auto; padding: 1.5rem 0; }
 }
