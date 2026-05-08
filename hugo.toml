@@ -7,7 +7,7 @@ paginate = 10
 [params]
   author      = "Paolo Carta"
   description = "Freelance Kubernetes Consultant & DevOps Engineer helping teams build reliable, scalable infrastructure."
-  email       = "hello@paolocarta.com"
+  email       = "learning@withpaolo.com"
   tagline     = "Kubernetes Consultant & DevOps Engineer"
   location    = "Remote"
   linkedin    = "https://linkedin.com/in/paolocarta"
