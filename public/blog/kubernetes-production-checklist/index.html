@@ -3,16 +3,113 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>A Kubernetes Production Readiness Checklist | Paolo Carta</title>
+
 <meta name="description" content="The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.">
 <meta name="author" content="Paolo Carta">
 <link rel="canonical" href="http://localhost:1313/blog/kubernetes-production-checklist/">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="sitemap" type="application/xml" href="http://localhost:1313/sitemap.xml">
 
-<meta property="og:title" content="A Kubernetes Production Readiness Checklist">
+
+<meta property="og:site_name" content="Paolo Carta">
+<meta property="og:title" content="A Kubernetes Production Readiness Checklist | Paolo Carta">
 <meta property="og:description" content="The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.">
 <meta property="og:url" content="http://localhost:1313/blog/kubernetes-production-checklist/">
 <meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+
+
+<meta property="og:image" content="http://localhost:1313/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="article:published_time" content="2026-01-15T00:00:00Z">
+<meta property="article:modified_time" content="2026-01-15T00:00:00Z">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="production">
+<meta property="article:tag" content="reliability">
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@c4mer">
+<meta name="twitter:creator" content="@c4mer">
+<meta name="twitter:title" content="A Kubernetes Production Readiness Checklist | Paolo Carta">
+<meta name="twitter:description" content="The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.">
+<meta name="twitter:image" content="http://localhost:1313/images/og-default.png">
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https:\/\/paolocarta.com/#person",
+  "name": "Paolo Carta",
+  "url": "https:\/\/paolocarta.com/",
+  "email": "learning@withpaolo.com",
+  "jobTitle": "Freelance Kubernetes Consultant & DevOps Engineer",
+  "description": "Freelance Kubernetes Consultant \u0026 DevOps Engineer helping teams build reliable, scalable infrastructure.",
+  "image": "http:\/\/localhost:1313\/images\/og-default.png",
+  "sameAs": ["https:\/\/linkedin.com\/in\/paolocarta", "https:\/\/github.com\/paolocarta"],
+  "knowsAbout": ["Kubernetes","DevOps","Platform Engineering","GitOps","Infrastructure as Code","CI/CD","Terraform","Prometheus","Grafana"]
+}
+</script>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "http:\/\/localhost:1313\/blog\/kubernetes-production-checklist\/#blogposting",
+  "headline": "\"A Kubernetes Production Readiness Checklist\"",
+  "description": "\"The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements.\"",
+  "url": "http:\/\/localhost:1313\/blog\/kubernetes-production-checklist\/",
+  "datePublished": "2026-01-15T00:00:00Z",
+  "dateModified": "2026-01-15T00:00:00Z",
+  "wordCount":  358 ,
+  "timeRequired": "PT2M",
+  "image": { "@type": "ImageObject", "url": "http:\/\/localhost:1313\/images\/og-default.png", "width": 1200, "height": 630 },
+  "author": { "@id": "https:\/\/paolocarta.com/#person" },
+  "publisher": { "@id": "https:\/\/paolocarta.com/#person" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "http:\/\/localhost:1313\/blog\/kubernetes-production-checklist\/" },
+  "keywords": "[\"kubernetes\",\"production\",\"reliability\"]"
+}
+</script>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https:\/\/paolocarta.com/" },
+    { "@type": "ListItem", "position": 2, "name": "\"Blog\"", "item": "http:\/\/localhost:1313\/blog\/" },
+    { "@type": "ListItem", "position": 3, "name": "\"A Kubernetes Production Readiness Checklist\"", "item": "http:\/\/localhost:1313\/blog\/kubernetes-production-checklist\/" }
+  ]
+}
+</script>
+
+
+
+<link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
@@ -58,6 +155,9 @@
       <time class="article-date" datetime="2026-01-15">
         January 15, 2026
       </time>
+      
+      
+      <span class="reading-time">2 min read</span>
       
       
       <ul class="tag-list">

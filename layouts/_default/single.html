@@ -8,6 +8,9 @@
         {{ .Date.Format "January 2, 2006" }}
       </time>
       {{ end }}
+      {{ if .ReadingTime }}
+      <span class="reading-time">{{ .ReadingTime }} min read</span>
+      {{ end }}
       {{ with .Params.tags }}
       <ul class="tag-list">
         {{ range . }}

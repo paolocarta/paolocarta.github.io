@@ -1,0 +1,105 @@
+{{ $author     := .Site.Params.author }}
+{{ $siteURL    := .Site.Params.siteURL }}
+{{ $linkedin   := .Site.Params.linkedin }}
+{{ $github     := .Site.Params.github }}
+{{ $email      := .Site.Params.email }}
+{{ $ogImage    := .Site.Params.ogImage }}
+{{ with .Params.ogImage }}{{ $ogImage = . }}{{ end }}
+{{ $ogImageAbs := $ogImage | absURL }}
+
+<!-- Person: every page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "{{ $siteURL }}/#person",
+  "name": "{{ $author }}",
+  "url": "{{ $siteURL }}/",
+  "email": "{{ $email }}",
+  "jobTitle": "Freelance Kubernetes Consultant & DevOps Engineer",
+  "description": "{{ .Site.Params.description }}",
+  "image": "{{ $ogImageAbs }}",
+  "sameAs": ["{{ $linkedin }}", "{{ $github }}"],
+  "knowsAbout": ["Kubernetes","DevOps","Platform Engineering","GitOps","Infrastructure as Code","CI/CD","Terraform","Prometheus","Grafana"]
+}
+</script>
+
+{{ if .IsHome }}
+<!-- WebSite: homepage only -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ $siteURL }}/#website",
+  "url": "{{ $siteURL }}/",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "publisher": { "@id": "{{ $siteURL }}/#person" }
+}
+</script>
+{{ end }}
+
+{{ if and .IsPage (eq .Section "blog") }}
+<!-- BlogPosting: blog single pages -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{ .Permalink }}#blogposting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Site.Params.description | jsonify }}{{ end }},
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "wordCount": {{ .WordCount }},
+  "timeRequired": "PT{{ .ReadingTime }}M",
+  "image": { "@type": "ImageObject", "url": "{{ $ogImageAbs }}", "width": 1200, "height": 630 },
+  "author": { "@id": "{{ $siteURL }}/#person" },
+  "publisher": { "@id": "{{ $siteURL }}/#person" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ .Permalink }}" }{{ with .Params.tags }},
+  "keywords": {{ . | jsonify }}{{ end }}
+}
+</script>
+{{ end }}
+
+{{ if eq .RelPermalink "/services/" }}
+<!-- ProfessionalService: services page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "{{ $siteURL }}/services/#professionalservice",
+  "name": "Paolo Carta — Kubernetes & DevOps Consulting",
+  "url": "{{ $siteURL }}/services/",
+  "description": "Kubernetes consulting, DevOps engineering, and platform engineering for teams that care about reliability.",
+  "provider": { "@id": "{{ $siteURL }}/#person" },
+  "areaServed": "Worldwide",
+  "serviceType": ["Kubernetes Consulting","DevOps Engineering","Platform Engineering"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Consulting Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kubernetes Consulting", "description": "Cluster design, production-readiness, migration, autoscaling, RBAC, and secrets management." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DevOps Engineering", "description": "CI/CD pipelines, GitOps with Argo CD or Flux, Infrastructure as Code with Terraform, observability stacks." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Platform Engineering", "description": "Internal developer platforms, self-service environment provisioning, developer portal setup." } }
+    ]
+  }
+}
+</script>
+{{ end }}
+
+{{ if not .IsHome }}
+<!-- BreadcrumbList: every non-home page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ $siteURL }}/" }{{ if .IsPage }},
+    { "@type": "ListItem", "position": 2, "name": {{ .CurrentSection.Title | jsonify }}, "item": "{{ .CurrentSection.Permalink }}" },
+    { "@type": "ListItem", "position": 3, "name": {{ .Title | jsonify }}, "item": "{{ .Permalink }}" }{{ else }},
+    { "@type": "ListItem", "position": 2, "name": {{ .Title | jsonify }}, "item": "{{ .Permalink }}" }{{ end }}
+  ]
+}
+</script>
+{{ end }}

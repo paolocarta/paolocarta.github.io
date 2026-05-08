@@ -10,8 +10,15 @@ paginate = 10
   email       = "learning@withpaolo.com"
   tagline     = "Kubernetes Consultant & DevOps Engineer"
   location    = "Remote"
-  linkedin    = "https://linkedin.com/in/paolocarta"
-  github      = "https://github.com/paolocarta"
+  linkedin      = "https://linkedin.com/in/paolocarta"
+  github        = "https://github.com/paolocarta"
+  twitterHandle = "@c4mer"
+  ogImage       = "/images/og-default.png"
+  siteURL       = "https://paolocarta.com"
+
+[sitemap]
+  changefreq = "monthly"
+  priority   = 0.5
 
 [menu]
   [[menu.main]]

@@ -3,6 +3,7 @@ title: "A Kubernetes Production Readiness Checklist"
 date: 2026-01-15
 description: "The checks I run before declaring a Kubernetes cluster production-ready, drawn from real engagements."
 tags: ["kubernetes", "production", "reliability"]
+author: "Paolo Carta"
 draft: false
 ---
 
