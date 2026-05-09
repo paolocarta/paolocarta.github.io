@@ -605,24 +605,22 @@ ul { list-style: none; }
   margin-bottom: 1.25rem;
 }
 
-.service-points {
-  list-style: none;
+.service-item ul {
+  list-style: disc;
+  padding-left: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.service-points li {
+.service-item ul li {
   font-size: 0.9rem;
   color: var(--text-muted);
-  padding-left: 1.25rem;
-  position: relative;
 }
-.service-points li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
+
+.service-item p {
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
 }
 
 .services-cta {
@@ -643,7 +641,7 @@ ul { list-style: none; }
    Contact page
    ============================================= */
 .contact-block {
-  max-width: 480px;
+  max-width: 560px;
 }
 
 .contact-lead {
@@ -654,21 +652,88 @@ ul { list-style: none; }
 
 .contact-btn {
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
-.contact-links {
+.contact-email-hint {
+  display: block;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  user-select: all;
+}
+
+.contact-email-hint::before {
+  content: attr(data-user) "@" attr(data-domain);
+}
+
+.social-cards {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.contact-links a {
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.social-card:hover {
+  background: var(--bg-hover);
+  text-decoration: none;
+  transform: translateX(3px);
+}
+
+.social-card--linkedin:hover { border-color: #0a66c2; }
+.social-card--github:hover   { border-color: #58a6ff; }
+
+.social-card__logo {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
   color: var(--text-muted);
-  font-size: 0.9rem;
   transition: color var(--transition);
 }
-.contact-links a:hover { color: var(--accent); text-decoration: none; }
+
+.social-card--linkedin:hover .social-card__logo { color: #0a66c2; }
+.social-card--github:hover   .social-card__logo { color: var(--accent); }
+
+.social-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.social-card__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.social-card__handle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.social-card__arrow {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color var(--transition);
+}
+
+.social-card:hover .social-card__arrow { color: var(--text); }
 
 /* =============================================
    Single article (blog post)
