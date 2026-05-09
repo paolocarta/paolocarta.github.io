@@ -184,21 +184,31 @@
     <div class="post-list">
       
       <article class="post-card">
-        <time class="post-date" datetime="2026-01-15">Jan 15, 2026</time>
-        <h3 class="post-title"><a href="http://localhost:1313/blog/kubernetes-production-checklist/">A Kubernetes Production Readiness Checklist</a></h3>
-        <p class="post-summary"><p>Declaring a cluster &ldquo;production-ready&rdquo; is often more of a vibe than a rigorous process. After running this exercise with a dozen or so clients, I&rsquo;ve converged on a checklist that covers the things that actually bite people — not an exhaustive spec, but a focused set of high-signal checks.</p>
-<h2 id="resource-requests-and-limits">Resource requests and limits</h2>
-<p>Every container should have CPU and memory <strong>requests</strong> set. Limits are more nuanced — memory limits are important to prevent OOMKills cascading, but CPU limits can cause unnecessary throttling if set too low. At minimum: set requests on everything, set memory limits with some headroom, and measure actual usage before tuning CPU limits.</p></p>
-        <a class="link-arrow" href="http://localhost:1313/blog/kubernetes-production-checklist/">Read →</a>
+        <time class="post-date" datetime="2024-11-13">Nov 13, 2024</time>
+        <h3 class="post-title"><a href="http://localhost:1313/blog/configmaps-behavior-kubernetes/">Behavior of ConfigMaps in Kubernetes When We Update Them</a></h3>
+        <p class="post-summary"><p>Working with Kubernetes I noticed some confusion when talking about what happens when a ConfigMap gets updated.</p>
+<p>This article would like to explain my understanding about this behaviour.</p>
+<h2 id="using-volume-mounts">Using Volume Mounts</h2>
+<p>When a ConfigMap is mounted as a volume, Kubernetes eventually will update the files in the volume if you are not using a subpath. However, the application needs to detect these changes and reload the configuration. Some apps for instance just load the config at startup and not dynamically.</p></p>
+        <a class="link-arrow" href="http://localhost:1313/blog/configmaps-behavior-kubernetes/">Read →</a>
       </article>
       
       <article class="post-card">
-        <time class="post-date" datetime="2025-11-20">Nov 20, 2025</time>
+        <time class="post-date" datetime="2023-11-20">Nov 20, 2023</time>
         <h3 class="post-title"><a href="http://localhost:1313/blog/devops-small-teams/">DevOps on Small Teams: What Actually Matters</a></h3>
         <p class="post-summary"><p>A two-person startup has different DevOps needs than a 200-person engineering org, and treating them the same is a reliable way to waste a lot of time. After working with teams at various stages, here&rsquo;s what I&rsquo;ve found actually moves the needle when you&rsquo;re small.</p>
 <h2 id="invest-early-in-fast-reliable-ci">Invest early in fast, reliable CI</h2>
 <p>Every hour of flaky CI is an hour of developer attention tax paid daily. A test suite that takes 20 minutes and occasionally fails for no reason will destroy your team&rsquo;s confidence in the pipeline and, eventually, in tests themselves.</p></p>
         <a class="link-arrow" href="http://localhost:1313/blog/devops-small-teams/">Read →</a>
+      </article>
+      
+      <article class="post-card">
+        <time class="post-date" datetime="2023-01-15">Jan 15, 2023</time>
+        <h3 class="post-title"><a href="http://localhost:1313/blog/kubernetes-production-checklist/">A Kubernetes Production Readiness Checklist</a></h3>
+        <p class="post-summary"><p>Declaring a cluster &ldquo;production-ready&rdquo; is often more of a vibe than a rigorous process. After running this exercise with a dozen or so clients, I&rsquo;ve converged on a checklist that covers the things that actually bite people — not an exhaustive spec, but a focused set of high-signal checks.</p>
+<h2 id="resource-requests-and-limits">Resource requests and limits</h2>
+<p>Every container should have CPU and memory <strong>requests</strong> set. Limits are more nuanced — memory limits are important to prevent OOMKills cascading, but CPU limits can cause unnecessary throttling if set too low. At minimum: set requests on everything, set memory limits with some headroom, and measure actual usage before tuning CPU limits.</p></p>
+        <a class="link-arrow" href="http://localhost:1313/blog/kubernetes-production-checklist/">Read →</a>
       </article>
       
     </div>

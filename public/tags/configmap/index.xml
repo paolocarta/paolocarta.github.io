@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configmap on Paolo Carta</title>
+    <link>http://localhost:1313/tags/configmap/</link>
+    <description>Recent content in Configmap on Paolo Carta</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/configmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Behavior of ConfigMaps in Kubernetes When We Update Them</title>
+      <link>http://localhost:1313/blog/configmaps-behavior-kubernetes/</link>
+      <pubDate>Wed, 13 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/configmaps-behavior-kubernetes/</guid>
+      <description>&lt;p&gt;Working with Kubernetes I noticed some confusion when talking about what happens when a ConfigMap gets updated.&lt;/p&gt;&#xA;&lt;p&gt;This article would like to explain my understanding about this behaviour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;using-volume-mounts&#34;&gt;Using Volume Mounts&lt;/h2&gt;&#xA;&lt;p&gt;When a ConfigMap is mounted as a volume, Kubernetes eventually will update the files in the volume if you are not using a subpath. However, the application needs to detect these changes and reload the configuration. Some apps for instance just load the config at startup and not dynamically.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

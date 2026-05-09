@@ -292,8 +292,9 @@ ul { list-style: none; }
 }
 
 .post-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
 }
 .post-title a { color: var(--text); }
