@@ -61,10 +61,15 @@
     <h2 class="section-title">Latest Posts</h2>
     <div class="post-list">
       {{ range $recent }}
-      <article class="post-card">
+      <article class="post-card" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
         <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-        <h3 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p class="post-summary">{{ .Summary }}</p>
+        <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p class="post-summary">{{ .Description | default (.Summary | plainify | truncate 200) }}</p>
+        {{ with .Params.tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
         <a class="link-arrow" href="{{ .Permalink }}">Read →</a>
       </article>
       {{ end }}
