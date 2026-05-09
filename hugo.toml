@@ -12,7 +12,7 @@ paginate = 10
   location    = "Remote"
   linkedin      = "https://www.linkedin.com/in/paolo-carta"
   github        = "https://github.com/paolocarta"
-  twitterHandle = "@c4mer"
+  twitterHandle = "@cl4mer"
   ogImage       = "/images/og-default.png"
   siteURL       = "https://paolocarta.com"
 
