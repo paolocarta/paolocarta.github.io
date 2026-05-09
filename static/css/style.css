@@ -276,13 +276,13 @@ ul { list-style: none; }
 }
 
 .tag-filter-btn {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
   background: var(--bg-hover);
   color: var(--text-muted);
   border: 1px solid var(--border);
   border-radius: 2rem;
-  padding: 0.3rem 0.85rem;
+  padding: 0.2rem 0.6rem;
   cursor: pointer;
   transition: color var(--transition), border-color var(--transition), background var(--transition);
 }
@@ -291,9 +291,9 @@ ul { list-style: none; }
   border-color: var(--accent-dim);
 }
 .tag-filter-btn.active {
-  background: var(--accent-dim);
-  color: #fff;
+  color: var(--accent);
   border-color: var(--accent);
+  background: var(--bg-hover);
 }
 
 /* =============================================

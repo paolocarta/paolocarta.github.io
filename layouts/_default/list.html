@@ -27,7 +27,7 @@
 
   <div class="post-list">
     {{ range .Pages }}
-    <article class="post-card" data-tags="{{ delimit .Params.tags "," }}">
+    <article class="post-card" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
       <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
       <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
       <p class="post-summary">{{ .Description | default (.Summary | plainify | truncate 200) }}</p>
