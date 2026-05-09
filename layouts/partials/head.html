@@ -1,5 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
 
 <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
@@ -7,6 +9,7 @@
 <meta name="author" content="{{ .Site.Params.author }}">
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="sitemap" type="application/xml" href="{{ "/sitemap.xml" | absURL }}">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} — Blog" href="{{ "/blog/index.xml" | absURL }}">
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -25,6 +28,7 @@
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
 {{ with .Params.tags }}{{ range . }}<meta property="article:tag" content="{{ . }}">
 {{ end }}{{ end }}
+{{ with .Site.Params.linkedin }}<meta property="article:author" content="{{ . }}">{{ end }}
 {{ end }}
 
 <!-- Twitter / X Cards -->

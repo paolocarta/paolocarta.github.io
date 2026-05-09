@@ -47,7 +47,7 @@
   "@type": "BlogPosting",
   "@id": "{{ .Permalink }}#blogposting",
   "headline": {{ .Title | jsonify }},
-  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Site.Params.description | jsonify }}{{ end }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
   "url": "{{ .Permalink }}",
   "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
   "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
@@ -58,6 +58,22 @@
   "publisher": { "@id": "{{ $siteURL }}/#person" },
   "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ .Permalink }}" }{{ with .Params.tags }},
   "keywords": {{ . | jsonify }}{{ end }}
+}
+</script>
+{{ end }}
+
+{{ if and (not .IsPage) (eq .Section "blog") }}
+<!-- Blog: blog list page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "{{ $siteURL }}/blog/#blog",
+  "name": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Site.Params.description | jsonify }}{{ end }},
+  "url": "{{ .Permalink }}",
+  "publisher": { "@id": "{{ $siteURL }}/#person" },
+  "author": { "@id": "{{ $siteURL }}/#person" }
 }
 </script>
 {{ end }}
