@@ -3,22 +3,23 @@ title: "About"
 description: "Background, experience, and what I stand for."
 ---
 
-I'm **Paolo Carta**, a freelance Kubernetes consultant and DevOps engineer based remotely. I've spent the past several years helping engineering teams move faster without breaking things — designing container infrastructure, automating delivery pipelines, and building the internal tooling that removes toil from developers' daily lives.
+I'm **Paolo Carta**, a freelance Kubernetes consultant and DevOps engineer. I've spent the past several years helping engineering teams move faster without breaking things — designing container infrastructure, automating delivery pipelines, and building the internal tooling that removes toil from developers' daily lives.
 
 I work with startups scaling their first production Kubernetes clusters, and with larger organisations untangling years of manual, fragile infrastructure. In both cases, the goal is the same: reliable systems that teams understand and trust.
 
 ## Background
 
-Before going independent, I worked across backend engineering and infrastructure roles, which means I can have honest conversations with both the application developers and the platform teams. I'm comfortable reading Go and Helm charts, writing Terraform modules, and debugging a 3-AM OOMKill incident.
+Before going independent, I worked across backend engineering and infrastructure roles, which means I can have honest conversations with both the application developers and the platform teams. I'm comfortable reading Go, YAML, shell scripts, writing Terraform modules, and debugging production incidents.
 
 ## Technical focus areas
 
-- **Kubernetes** — EKS, GKE, AKS, and on-premises clusters
-- **GitOps** — Argo CD, Flux, GitHub Actions, GitLab CI
-- **Infrastructure as Code** — Terraform, Pulumi, Crossplane
-- **Observability** — Prometheus, Grafana, OpenTelemetry, Loki
+- **Kubernetes** — EKS, GKE, and on-premises clusters
+- **GitOps** — Argo CD, Flux
+- **CI/CD** — GitHub Actions, GitLab CI, Jenkins
+- **Infrastructure as Code** — Terraform, Pulumi, Config Connector
+- **Observability** — Prometheus, Grafana, Loki, Jaeger, Datadog
 - **Security** — RBAC, network policies, secrets management (Vault, External Secrets)
-- **Platform engineering** — Backstage, Port, internal developer portals
+- **Platform engineering** — Backstage, internal developer portals
 
 ## How I work
 
