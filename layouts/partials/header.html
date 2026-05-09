@@ -1,6 +1,24 @@
 <header class="site-header">
   <nav class="nav container">
-    <a class="nav-logo" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+    <a class="nav-logo" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+    <div class="lang-switch">
+      {{ if .IsTranslated }}
+        {{ range .AllTranslations }}
+          {{ if eq .Lang $.Lang }}
+            <span class="lang-item lang-current">{{ upper .Lang }}</span>
+          {{ else }}
+            <a class="lang-item lang-link" href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ upper .Lang }}</a>
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        <span class="lang-item lang-current">{{ upper .Lang }}</span>
+        {{ if eq .Lang "en" }}
+          <a class="lang-item lang-link" href="/it/" hreflang="it">IT</a>
+        {{ else }}
+          <a class="lang-item lang-link" href="/" hreflang="en">EN</a>
+        {{ end }}
+      {{ end }}
+    </div>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>

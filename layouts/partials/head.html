@@ -17,7 +17,9 @@
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{{ if eq .Lang "it" }}it_IT{{ else }}en_US{{ end }}">
+{{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ end }}
 {{ $ogImage := .Site.Params.ogImage }}
 {{ with .Params.ogImage }}{{ $ogImage = . }}{{ end }}
 <meta property="og:image" content="{{ $ogImage | absURL }}">

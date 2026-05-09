@@ -1,56 +1,106 @@
 baseURL = "https://paolocarta.com/"
-languageCode = "en-us"
 title = "Paolo Carta"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 paginate = 10
 
 [params]
-  author      = "Paolo Carta"
-  description = "Freelance Kubernetes Consultant & DevOps Engineer helping teams build reliable, scalable infrastructure."
-  email       = "learning@withpaolo.com"
-  tagline     = "Kubernetes Consultant & DevOps Engineer"
-  location    = "Remote"
+  author        = "Paolo Carta"
+  email         = "learning@withpaolo.com"
+  location      = "Remote"
   linkedin      = "https://www.linkedin.com/in/paolo-carta"
   github        = "https://github.com/paolocarta"
   twitterHandle = "@cl4mer"
   ogImage       = "/images/og-default.png"
   siteURL       = "https://paolocarta.com"
 
+[languages.en]
+  languageCode = "en-us"
+  languageName = "English"
+  weight       = 1
+
+[languages.en.params]
+  description = "Freelance Kubernetes Consultant & DevOps Engineer helping teams build reliable, scalable infrastructure."
+  tagline     = "Kubernetes Consultant & DevOps Engineer"
+
+[[languages.en.menu.main]]
+  name       = "Home"
+  url        = "/"
+  weight     = 10
+  identifier = "home"
+
+[[languages.en.menu.main]]
+  name       = "About"
+  url        = "/about/"
+  weight     = 20
+  identifier = "about"
+
+[[languages.en.menu.main]]
+  name       = "Services"
+  url        = "/services/"
+  weight     = 30
+  identifier = "services"
+
+[[languages.en.menu.main]]
+  name       = "Blog"
+  url        = "/blog/"
+  weight     = 40
+  identifier = "blog"
+
+[[languages.en.menu.main]]
+  name       = "Contact"
+  url        = "/contact/"
+  weight     = 50
+  identifier = "contact"
+
+[languages.it]
+  languageCode = "it"
+  languageName = "Italiano"
+  weight       = 2
+
+[languages.it.params]
+  description = "Consulente Kubernetes freelance e DevOps Engineer per team che costruiscono infrastrutture affidabili e scalabili."
+  tagline     = "Consulente Kubernetes & DevOps Engineer"
+
+[[languages.it.menu.main]]
+  name       = "Home"
+  url        = "/it/"
+  weight     = 10
+  identifier = "home"
+
+[[languages.it.menu.main]]
+  name       = "Chi Sono"
+  url        = "/it/about/"
+  weight     = 20
+  identifier = "about"
+
+[[languages.it.menu.main]]
+  name       = "Servizi"
+  url        = "/it/services/"
+  weight     = 30
+  identifier = "services"
+
+[[languages.it.menu.main]]
+  name       = "Blog"
+  url        = "/blog/"
+  weight     = 40
+  identifier = "blog"
+
+[[languages.it.menu.main]]
+  name       = "Contatti"
+  url        = "/it/contact/"
+  weight     = 50
+  identifier = "contact"
+
 [sitemap]
   changefreq = "monthly"
   priority   = 0.5
 
-[menu]
-  [[menu.main]]
-    name       = "Home"
-    url        = "/"
-    weight     = 10
-    identifier = "home"
-  [[menu.main]]
-    name       = "About"
-    url        = "/about/"
-    weight     = 20
-    identifier = "about"
-  [[menu.main]]
-    name       = "Services"
-    url        = "/services/"
-    weight     = 30
-    identifier = "services"
-  [[menu.main]]
-    name       = "Blog"
-    url        = "/blog/"
-    weight     = 40
-    identifier = "blog"
-  [[menu.main]]
-    name       = "Contact"
-    url        = "/contact/"
-    weight     = 50
-    identifier = "contact"
-
 [markup]
   [markup.highlight]
-    style    = "github-dark"
-    lineNos  = false
+    style     = "github-dark"
+    lineNos   = false
     noClasses = true
   [markup.goldmark.renderer]
     unsafe = true

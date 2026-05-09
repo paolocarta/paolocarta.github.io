@@ -3,13 +3,13 @@
 {{/* Hero */}}
 <section class="hero">
   <div class="container hero-inner">
-    <p class="hero-eyebrow">Hi, I'm</p>
+    <p class="hero-eyebrow">{{ i18n "hero_greeting" }}</p>
     <h1 class="hero-name">{{ .Site.Params.author }}</h1>
     <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
     <p class="hero-description">{{ .Site.Params.description }}</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="{{ "/services/" | relURL }}">View Services</a>
-      <a class="btn btn-secondary" href="mailto:{{ .Site.Params.email }}">Get in Touch</a>
+      <a class="btn btn-primary" href="{{ "/services/" | relLangURL }}">{{ i18n "hero_cta_services" }}</a>
+      <a class="btn btn-secondary" href="mailto:{{ .Site.Params.email }}">{{ i18n "hero_cta_contact" }}</a>
     </div>
   </div>
 </section>
@@ -17,10 +17,10 @@
 {{/* About teaser */}}
 <section class="section section-about-teaser">
   <div class="container">
-    <h2 class="section-title">About Me</h2>
+    <h2 class="section-title">{{ i18n "about_section_title" }}</h2>
     {{ with .Site.GetPage "/about" }}
     <p class="teaser-text">{{ .Summary }}</p>
-    <a class="link-arrow" href="{{ .Permalink }}">Read more →</a>
+    <a class="link-arrow" href="{{ .Permalink }}">{{ i18n "about_read_more" }}</a>
     {{ end }}
   </div>
 </section>
@@ -28,26 +28,26 @@
 {{/* Services teaser */}}
 <section class="section section-services-teaser bg-card">
   <div class="container">
-    <h2 class="section-title">What I Do</h2>
+    <h2 class="section-title">{{ i18n "services_section_title" }}</h2>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">⚙️</div>
-        <h3>Kubernetes Consulting</h3>
-        <p>End-to-end Kubernetes adoption — cluster design, security hardening, and cost optimisation on EKS and GKE.</p>
+        <h3>{{ i18n "services_card_k8s_title" }}</h3>
+        <p>{{ i18n "services_card_k8s_desc" }}</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🚀</div>
-        <h3>DevOps Engineering</h3>
-        <p>GitOps-first CI/CD pipelines, infrastructure automation, and observability stacks that let your team ship fast and reliably.</p>
+        <h3>{{ i18n "services_card_devops_title" }}</h3>
+        <p>{{ i18n "services_card_devops_desc" }}</p>
       </div>
       <div class="service-card">
         <div class="service-icon">☁️</div>
-        <h3>Cloud Engineering</h3>
-        <p>Cloud infrastructure on GCP and AWS — from landing zones and networking to cost governance and security baselines.</p>
+        <h3>{{ i18n "services_card_cloud_title" }}</h3>
+        <p>{{ i18n "services_card_cloud_desc" }}</p>
       </div>
     </div>
     <div class="section-cta">
-      <a class="link-arrow" href="{{ "/services/" | relURL }}">All services →</a>
+      <a class="link-arrow" href="{{ "/services/" | relLangURL }}">{{ i18n "services_all_link" }}</a>
     </div>
   </div>
 </section>
@@ -58,7 +58,7 @@
 {{ if $recent }}
 <section class="section section-blog-teaser">
   <div class="container">
-    <h2 class="section-title">Latest Posts</h2>
+    <h2 class="section-title">{{ i18n "blog_section_title" }}</h2>
     <div class="post-list">
       {{ range $recent }}
       <article class="post-card" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
@@ -70,12 +70,12 @@
           {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
         </ul>
         {{ end }}
-        <a class="link-arrow" href="{{ .Permalink }}">Read →</a>
+        <a class="link-arrow" href="{{ .Permalink }}">{{ i18n "blog_read_link" }}</a>
       </article>
       {{ end }}
     </div>
     <div class="section-cta">
-      <a class="link-arrow" href="{{ "/blog/" | relURL }}">All posts →</a>
+      <a class="link-arrow" href="{{ "/blog/" | relURL }}">{{ i18n "blog_all_link" }}</a>
     </div>
   </div>
 </section>
@@ -84,8 +84,8 @@
 {{/* Talks & Community */}}
 <section class="section section-talks">
   <div class="container">
-    <h2 class="section-title">Talks & Community</h2>
-    <p class="talks-intro">Conference presentations and community talks on Kubernetes, GitOps, and Cloud Native CI/CD.</p>
+    <h2 class="section-title">{{ i18n "talks_section_title" }}</h2>
+    <p class="talks-intro">{{ i18n "talks_intro" }}</p>
     <div class="talks-grid">
 
       <a class="talk-card" href="https://www.youtube.com/watch?v=dK7ELl9CM5Q" data-video-id="dK7ELl9CM5Q" target="_blank" rel="noopener noreferrer">
@@ -178,7 +178,7 @@
 
     </div>
     <div class="section-cta">
-      <a class="link-arrow" href="https://www.youtube.com/playlist?list=PLeveYQ6m96h1hPfS7V1o0td1Frmshc88j" target="_blank" rel="noopener noreferrer">All talks on YouTube →</a>
+      <a class="link-arrow" href="https://www.youtube.com/playlist?list=PLeveYQ6m96h1hPfS7V1o0td1Frmshc88j" target="_blank" rel="noopener noreferrer">{{ i18n "talks_all_link" }}</a>
     </div>
   </div>
 </section>
@@ -198,13 +198,13 @@
 {{/* Udemy course */}}
 <section class="section section-course bg-card">
   <div class="container">
-    <h2 class="section-title">Learn Kubernetes in Italian</h2>
+    <h2 class="section-title">{{ i18n "course_section_title" }}</h2>
     <div class="course-card">
       <div class="course-icon">🎓</div>
       <div class="course-content">
         <h3 class="course-title">Kubernetes Pratico e Veloce per Principianti in Italiano</h3>
-        <p class="course-description">Kubernetes Fundamentals for Devs in Italian on Udemy — get hands-on with the core concepts in your native language.</p>
-        <a class="btn btn-primary" href="https://www.udemy.com/course/kubernetes-pratico-per-principianti" target="_blank" rel="noopener noreferrer">View Course on Udemy →</a>
+        <p class="course-description">{{ i18n "course_description" }}</p>
+        <a class="btn btn-primary" href="https://www.udemy.com/course/kubernetes-pratico-per-principianti" target="_blank" rel="noopener noreferrer">{{ i18n "course_cta" }}</a>
       </div>
     </div>
   </div>

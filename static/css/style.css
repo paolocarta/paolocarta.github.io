@@ -876,3 +876,42 @@ ul { list-style: none; }
   .talks-grid { grid-template-columns: 1fr; }
   .footer-inner { height: auto; padding: 1.5rem 0; }
 }
+
+/* =============================================
+   Language switcher
+   ============================================= */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.lang-item {
+  padding: 0.2rem 0.35rem;
+  border-radius: var(--radius);
+}
+
+.lang-current {
+  color: var(--text);
+}
+
+.lang-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.lang-link:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lang-switch .lang-item + .lang-item::before {
+  content: "/";
+  color: var(--border);
+  margin-right: 0.15rem;
+}

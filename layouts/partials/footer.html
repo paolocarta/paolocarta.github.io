@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p class="footer-copy">&copy; {{ now.Year }} {{ .Site.Params.author }}. All rights reserved.</p>
+    <p class="footer-copy">&copy; {{ now.Year }} {{ .Site.Params.author }}. {{ i18n "footer_rights" }}</p>
     <ul class="footer-links">
       {{ with .Site.Params.linkedin }}
       <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

@@ -8,7 +8,7 @@
   <div class="contact-block">
     <p class="contact-lead">{{ .Params.lead }}</p>
     <a class="btn btn-primary contact-btn" href="mailto:{{ .Site.Params.email }}">
-      {{ .Params.email_label | default "Email me" }}
+      {{ .Params.email_label | default (i18n "contact_email_label") }}
     </a>
     {{ with .Site.Params.email }}
     {{ $parts := split . "@" }}

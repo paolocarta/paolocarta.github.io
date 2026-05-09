@@ -15,8 +15,8 @@
   </div>
 
   <div class="services-cta">
-    <p>Not sure what you need? Let's have a conversation.</p>
-    <a class="btn btn-primary" href="mailto:{{ .Site.Params.email }}">Get in Touch</a>
+    <p>{{ i18n "services_cta_text" }}</p>
+    <a class="btn btn-primary" href="mailto:{{ .Site.Params.email }}">{{ i18n "services_get_in_touch" }}</a>
   </div>
 </div>
 {{ end }}
