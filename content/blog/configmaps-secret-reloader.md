@@ -165,3 +165,7 @@ metadata:
 ```
 
 Theoretically we could also restrict the reloading to specific configmaps or secrets by name. However I do not like this approach since it's more coupled. Moreover, adding a configmap would need adapting the annotation value in the deployment.
+
+---
+
+Drop me a line if you want to walk through any of these in the context of your specific setup.

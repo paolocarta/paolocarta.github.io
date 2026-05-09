@@ -58,4 +58,4 @@ At a minimum: Prometheus scraping cluster metrics, Grafana dashboards for node C
 
 ---
 
-This is the short version. Drop me a line if you want to walk through any of these in the context of your specific setup.
+Drop me a line if you want to walk through any of these in the context of your specific setup.

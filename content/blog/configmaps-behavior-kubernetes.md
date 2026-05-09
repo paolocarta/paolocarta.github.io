@@ -60,3 +60,7 @@ metadata:
 ```
 
 The installed controller watches the ConfigMaps and Secrets and ensures that the deployment is reloaded when a change is detected.
+
+---
+
+Drop me a line if you want to walk through any of these in the context of your specific setup.
