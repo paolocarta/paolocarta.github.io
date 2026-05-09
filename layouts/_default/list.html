@@ -6,9 +6,28 @@
   </header>
 
   {{ if .Pages }}
+
+  {{/* Collect all unique tags */}}
+  {{ $allTags := slice }}
+  {{ range .Pages }}
+    {{ range .Params.tags }}
+      {{ $allTags = $allTags | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $allTags = $allTags | uniq | sort }}
+
+  {{ if gt (len $allTags) 0 }}
+  <div class="tag-filter-bar">
+    <button class="tag-filter-btn active" data-tag="all">All</button>
+    {{ range $allTags }}
+    <button class="tag-filter-btn" data-tag="{{ . }}">{{ . }}</button>
+    {{ end }}
+  </div>
+  {{ end }}
+
   <div class="post-list">
     {{ range .Pages }}
-    <article class="post-card">
+    <article class="post-card" data-tags="{{ delimit .Params.tags "," }}">
       <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
       <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
       <p class="post-summary">{{ .Description | default (.Summary | plainify | truncate 200) }}</p>
@@ -21,6 +40,25 @@
     </article>
     {{ end }}
   </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.tag-filter-btn');
+    const cards = document.querySelectorAll('.post-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const tag = btn.dataset.tag;
+        cards.forEach(card => {
+          const tags = card.dataset.tags.split(',').map(t => t.trim());
+          card.hidden = tag !== 'all' && !tags.includes(tag);
+        });
+      });
+    });
+  </script>
+
   {{ else }}
   <p class="empty-state">No posts yet. Check back soon.</p>
   {{ end }}
