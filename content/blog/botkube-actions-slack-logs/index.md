@@ -21,7 +21,7 @@ Imagine you're managing a Kubernetes cluster and want to keep an eye on any erro
 
 In the screenshot below for instance, you can see an error notified on Slack due to an OutOfMemory issue:
 
-Press enter or click to view image in full size
+![Botkube OOM notification on Slack](./1-botkube-error-with-logs1.jpeg)
 
 ## Meet Botkube Actions
 Necessary terminology:
@@ -161,11 +161,11 @@ For instance, the pictures below show some errors in infrastructure applications
 
 First:
 
-Press enter or click to view image in full size
+![Botkube error with logs](./2-botkube-oom-notification.jpeg)
 
 Second:
 
-Press enter or click to view image in full size
+![Botkube error with logs 2](./3-botkube-error-with-logs2.jpeg)
 
 Logs obtained this way can provide a quick overview of the problem, speeding up recovery time.
 
