@@ -9,7 +9,7 @@
       </time>
       {{ end }}
       {{ if .ReadingTime }}
-      <span class="reading-time">{{ .ReadingTime }} min read</span>
+      <span class="reading-time">{{ mul .ReadingTime 4 }} min read</span>
       {{ end }}
       {{ with .Params.tags }}
       <ul class="tag-list">
