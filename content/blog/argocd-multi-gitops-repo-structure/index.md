@@ -1,7 +1,7 @@
 ---
-title: "ArgoCD GitOps Repository Structure with a single management instance"
-date: 2025-03-23
-description: "A practical guide to structuring a GitOps repository for ArgoCD with a single management instance, supporting multiple environments via Kustomize and a clear separation between apps, infrastructure, and ArgoCD configuration."
+title: "ArgoCD GitOps Repository structure with multiple instances"
+date: 2025-03-25
+description: "A practical guide to structuring a GitOps repository for ArgoCD with multiple instances — one per cluster — supporting multiple environments via Kustomize and a clear separation between apps, infrastructure, and ArgoCD configuration."
 tags: ["kubernetes", "argocd", "gitops", "kustomize", "devops"]
 author: "Paolo Carta"
 draft: false
@@ -11,22 +11,26 @@ Many organizations running workloads in Kubernetes are embracing ArgoCD to deplo
 
 Unfortunately there are not many guidelines or best practices yet explaining how to structure the GitOps repository for simplicity and maintainability.
 
-In this article I would like to show my solution with a setup consisting of a single management ArgoCD instance. It allows a clear separation between applications, infrastructure and ArgoCD Apps and Projects. Moreover it supports multiple environments by leveraging Kustomize.
+In this article I would like to show my solution with a setup consisting of multiple ArgoCD instances. Basically each Kubernetes cluster will have its own instance, which will manage all resources belonging to it. ArgoCD will be bootstrapped externally, for instance at cluster provisioning with Terraform.
 
-Source repo: [https://github.com/paolocarta/gitops-argocd-repo-structure](https://github.com/paolocarta/gitops-argocd-repo-structure)
+The structure proposed allows a clear separation between applications, infrastructure and ArgoCD Apps and Projects. Moreover it supports multiple environments by leveraging Kustomize.
+
+Source repo: [https://github.com/paolocarta/gitops-argocd-repo-structure/tree/multiple-argocd-instances](https://github.com/paolocarta/gitops-argocd-repo-structure/tree/multiple-argocd-instances)
+
+Related article about running a single management instance → [here](/blog/argocd-single-gitops-repo-structure).
 
 **Tech used:**
 - Kubernetes
 - ArgoCD
 - Kustomize
 
-Architecture with a single management instance:
-![Architecture](./argocd-management-cluster.jpg)
+Architecture with multiple instances (one per cluster):
+![Architecture](./argocd-per-cluster.jpg)
 
 
 ## Structure
 
-The main idea is to have one folder (`apps`) where we specify custom applications developed by our dev teams. Another folder (`infrastructure`) is where DevOps engineers will work, deploying infrastructure and middleware to our clusters. Finally, we need a folder (`argocd`) to instruct the single ArgoCD instance about what to deploy and where.
+The main idea is to have one folder (`apps`) where we specify custom applications developed by our dev teams. Another folder (`infrastructure`) is where DevOps engineers will work, deploying infrastructure and middleware to our clusters. Finally, we need a folder (`argocd`) to instruct the different ArgoCD instances about what to deploy and where.
 
 To recap, we have 3 main folders:
 
@@ -39,24 +43,24 @@ High level structure:
 ```
 ➜  gitops-repo git:(main) tree
 .
-│
+├── README.md
 ├── apps
 │   ├── another-app/
 │   └── flask-app/
-│
 ├── argocd
 │   ├── app-projects/
 │   ├── applications
-│   │   ├── apps/
-│   │   └── infrastructure/
+│   │   ├── dev
+│   │   └── prod
 │   └── bootstrap
-│       └── root-app.yaml
-│
+│       ├── root-app-dev.yaml
+│       └── root-app-prod.yaml
 ├── infrastructure
 │   ├── databases
 │   │   └── postgres/
 │   └── message-brokers
 │       └── rabbitmq/
+└── tools/
 ```
 
 The structure leverages Kustomize and its overlays for defining multiple environments and avoiding duplication.
@@ -64,9 +68,8 @@ The structure leverages Kustomize and its overlays for defining multiple environ
 Detailed structure:
 
 ```
-➜  gitops-repo git:(main) tree
+➜  gitops-repo git:(multiple-argocd-instances) tree
 .
-│
 ├── apps
 │   ├── another-app
 │   │   ├── base
@@ -85,34 +88,27 @@ Detailed structure:
 │       │   └── service.yaml
 │       └── overlays
 │           ├── dev
-│           │   ├── deployment.yaml
 │           │   └── kustomization.yaml
 │           └── prod
-│               ├── deployment.yaml
 │               └── kustomization.yaml
 │
 ├── argocd
 │   ├── app-projects
 │   │   ├── apps.yaml
-│   │   ├── brokers.yaml
 │   │   ├── databases.yaml
 │   │   └── system.yaml
 │   ├── applications
-│   │   ├── apps
-│   │   │   ├── external
-│   │   │   │   └── external-repo-app-of-apps.yaml
-│   │   │   └── internal
-│   │   │       ├── another-app-appset.yaml
-│   │   │       └── flask-app-appset.yaml
-│   │   └── infrastructure
-│   │       ├── dev
-│   │       │   ├── postgres.yaml
-│   │       │   └── rabbitmq.yaml
-│   │       └── prod
-│   │           ├── postgres.yaml
-│   │           └── rabbitmq.yaml
+│   │   ├── dev
+│   │   │   ├── apps
+│   │   │   │   ├── another-app.yaml
+│   │   │   │   └── flask-app.yaml
+│   │   │   └── infrastructure
+│   │   │       ├── postgres.yaml
+│   │   │       └── rabbitmq.yaml
+│   │   └── prod/
 │   └── bootstrap
-│       └── root-app.yaml
+│       ├── root-app-dev.yaml
+│       └── root-app-prod.yaml
 │
 ├── infrastructure
 │   ├── databases
@@ -137,10 +133,11 @@ Detailed structure:
 │               │   └── kustomization.yaml
 │               └── prod
 │                   └── kustomization.yaml
-├── tools
-│   ├── generate-secrets.sh
-│   ├── validate-argocd.sh
-│   └── validate-kustomize.sh
+│
+└── tools
+    ├── generate-secrets.sh
+    ├── validate-argocd.sh
+    └── validate-kustomize.sh
 ```
 
 ## Infrastructure Folder
@@ -172,7 +169,7 @@ This folder holds manifests for all infrastructure and middleware, for instance:
 │       └── rabbitmq/
 ```
 
-In the example we define a PostgreSQL Database and a RabbitMQ Broker. The middleware is deployed to a `dev` and `prod` environment. Each folder will be referenced by an ArgoCD application.
+In the example we define a PostgreSQL Database and a RabbitMQ Broker. The middleware is deployed to a `dev` and `prod` environment. Each folder will be referenced by an ArgoCD Application. The ArgoCD Application will live in the specific cluster — for instance, the `dev` Application will only exist in the dev cluster.
 
 Each infrastructure component is defined using Kustomize. A `base` layer holds common configuration. Each overlay can specify things which are environment specific.
 
@@ -190,7 +187,9 @@ In the example we define two apps:
 ```
 │
 ├── apps
-│   ├── another-app/
+│   ├── another-app
+│   │   ├── base
+│   │   └── overlays
 │   └── flask-app
 │       ├── base
 │       │   ├── deployment.yaml
@@ -205,45 +204,42 @@ In the example we define two apps:
 │               └── kustomization.yaml
 ```
 
-This folder could be extracted to separate repositories, depending on your company and team structure.
-
 ## ArgoCD Folder
 
-This folder defines all ArgoCD Applications and AppProjects. All of them are deployed to the single ArgoCD management instance.
+This folder defines all ArgoCD Applications, divided by environment and AppProjects.
 
-The first Application is the App of Apps: `bootstrap/root-app.yaml`. This is the application at the root of the tree hierarchy — it points to all other Applications defined. A reference to this app can be used where ArgoCD is actually installed. For instance, if ArgoCD is installed via Terraform, this Application can be applied to bootstrap the entire system.
+The first Application to bootstrap each cluster is the App of Apps: `bootstrap/root-app-{{environment}}.yaml`. This is the application at the root of the tree hierarchy — it points to all other Applications defined for that environment. If ArgoCD is installed using Terraform, this Application can be applied to bootstrap the entire system.
 
-The `applications` folder is divided by category: normal apps and infrastructure apps. This separation makes it clear which ArgoCD Applications manage custom services and which manage infrastructure middleware.
+The `applications` folder is divided by environment first, then by category: normal apps and infrastructure apps. This allows separating ArgoCD Applications by cluster and by scope — those managing custom services and those managing infrastructure middleware.
 
 ```
 ├── argocd
 │   ├── app-projects
 │   │   ├── apps.yaml
-│   │   ├── brokers.yaml
 │   │   ├── databases.yaml
 │   │   └── system.yaml
 │   ├── applications
-│   │   ├── apps
-│   │   │   ├── external
-│   │   │   │   └── external-repo-app-of-apps.yaml
-│   │   │   └── internal
-│   │   │       ├── another-app-appset.yaml
-│   │   │       └── flask-app-appset.yaml
-│   │   └── infrastructure
-│   │       ├── dev
-│   │       │   ├── postgres.yaml
-│   │       │   └── rabbitmq.yaml
-│   │       └── prod
-│   │           ├── postgres.yaml
-│   │           └── rabbitmq.yaml
+│   │   ├── dev
+│   │   │   ├── apps
+│   │   │   │   ├── another-app.yaml
+│   │   │   │   └── flask-app.yaml
+│   │   │   └── infrastructure
+│   │   │       ├── postgres.yaml
+│   │   │       └── rabbitmq.yaml
+│   │   └── prod
+│   │       ├── apps
+│   │       └── infrastructure
 │   └── bootstrap
-│       └── root-app.yaml
+│       ├── root-app-dev.yaml
+│       └── root-app-prod.yaml
 ```
 
-Finally, the `app-projects` folder holds ArgoCD AppProjects, which are used to categorize and group applications while also defining allowed source repositories and destination clusters.
+Finally, the `app-projects` folder holds ArgoCD AppProjects, which are used to categorize and group applications while also defining allowed source repositories and destination clusters. This resource can be applied unchanged across the different environments.
 
 ## Conclusions
 
 A starting structure like this can be very beneficial for projects leveraging ArgoCD to deploy to Kubernetes. It allows you to clearly identify application manifests, infrastructure manifests, and ArgoCD configuration in terms of Applications and AppProjects.
 
-Source repo: [https://github.com/paolocarta/gitops-argocd-repo-structure](https://github.com/paolocarta/gitops-argocd-repo-structure)
+Source repo: [https://github.com/paolocarta/gitops-argocd-repo-structure/tree/multiple-argocd-instances](https://github.com/paolocarta/gitops-argocd-repo-structure/tree/multiple-argocd-instances)
+
+Related article about running a single management instance → [here](/blog/argocd-single-gitops-repo-structure)
