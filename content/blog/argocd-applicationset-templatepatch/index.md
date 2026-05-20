@@ -2,7 +2,7 @@
 title: "Using ArgoCD ApplicationSet templating to conditionally apply SyncPolicies"
 date: 2025-03-29
 description: "How to use ArgoCD ApplicationSet templatePatch to conditionally apply syncPolicy based on the environment, enabling automatic sync on dev/test and manual sync on prod."
-tags: ["kubernetes", "argocd", "gitops", "devops"]
+tags: ["kubernetes", "argocd", "gitops"]
 author: "Paolo Carta"
 draft: false
 ---

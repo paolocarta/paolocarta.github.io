@@ -2,7 +2,7 @@
 title: "Use Botkube Actions to get logs in Slack on app issues"
 date: 2024-12-02
 description: ""
-tags: ["kubernetes", "slack", "botkube","devops"]
+tags: ["kubernetes", "slack", "botkube"]
 author: "Paolo Carta"
 draft: false
 ---

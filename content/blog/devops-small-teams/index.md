@@ -2,7 +2,7 @@
 title: "DevOps on Small Teams: What Actually Matters"
 date: 2023-11-20
 description: "Small teams don't have the bandwidth for enterprise DevOps theatre. Here's what to focus on."
-tags: ["devops", "ci/cd", "small-teams"]
+tags: ["ci/cd", "small-teams"]
 author: "Paolo Carta"
 draft: false
 ---

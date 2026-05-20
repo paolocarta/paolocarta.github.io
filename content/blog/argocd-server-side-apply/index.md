@@ -2,7 +2,7 @@
 title: "ArgoCD Server Side Apply for bulky CRDs"
 date: 2024-11-28
 description: "How to fix the 'Too long: must have at most 262144 bytes' error in ArgoCD by enabling server-side apply for large CRDs."
-tags: ["kubernetes", "argocd", "devops"]
+tags: ["kubernetes", "argocd"]
 author: "Paolo Carta"
 draft: false
 ---

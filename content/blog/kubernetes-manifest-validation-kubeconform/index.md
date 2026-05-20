@@ -2,7 +2,7 @@
 title: "Validate your Kubernetes manifests with Kubeconform and Kustomize in CI/CD"
 date: 2024-12-12
 description: "Learn how to integrate Kubeconform into your CI pipeline to automatically validate Kubernetes manifests before deployment."
-tags: ["kubernetes", "ci/cd", "devops", "gitops"]
+tags: ["kubernetes", "ci/cd", "gitops"]
 author: "Paolo Carta"
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: "ArgoCD GitOps Repository Structure with a single management instance"
 date: 2025-03-23
 description: "A practical guide to structuring a GitOps repository for ArgoCD with a single management instance, supporting multiple environments via Kustomize and a clear separation between apps, infrastructure, and ArgoCD configuration."
-tags: ["kubernetes", "argocd", "gitops", "kustomize", "devops"]
+tags: ["kubernetes", "argocd", "gitops", "kustomize"]
 author: "Paolo Carta"
 draft: false
 ---

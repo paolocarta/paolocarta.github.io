@@ -2,7 +2,7 @@
 title: "Kubernetes Error Notifications in Slack with Botkube"
 date: 2024-12-05
 description: "Learn how to set up Botkube to send Kubernetes error notifications to your Slack channels, keeping your platform team informed in real time."
-tags: ["kubernetes", "slack", "botkube", "devops"]
+tags: ["kubernetes", "slack", "botkube"]
 author: "Paolo Carta"
 draft: false
 ---

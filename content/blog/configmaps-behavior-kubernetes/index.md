@@ -2,7 +2,7 @@
 title: "Behavior of ConfigMaps in Kubernetes When We Update Them"
 date: 2024-11-13
 description: "What actually happens when you update a ConfigMap in Kubernetes depends on how you're using it. This article clarifies the behavior for volume mounts, environment variables, and how to automate restarts with Reloader."
-tags: ["kubernetes", "configmap", "devops"]
+tags: ["kubernetes", "configmap"]
 author: "Paolo Carta"
 draft: false
 ---

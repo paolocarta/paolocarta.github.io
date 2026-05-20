@@ -2,7 +2,7 @@
 title: "Configmaps and Secrets Reloader in Kubernetes"
 date: 2024-11-20
 description: "How to use the Reloader controller to automatically trigger rolling restarts of Kubernetes workloads when ConfigMaps or Secrets are updated, eliminating the need for manual pod restarts."
-tags: ["kubernetes", "configmap", "devops"]
+tags: ["kubernetes", "configmap"]
 author: "Paolo Carta"
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: "Application Cleanup with the ArgoCD Deletion Finalizer"
 date: 2024-11-27
 description: "How to use the ArgoCD deletion finalizer to automatically clean up Kubernetes resources when an Application is deleted, including cascading deletes for the App of Apps pattern."
-tags: ["kubernetes", "argocd", "devops"]
+tags: ["kubernetes", "argocd"]
 author: "Paolo Carta"
 draft: false
 ---
