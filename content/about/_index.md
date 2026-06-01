@@ -3,7 +3,7 @@ title: "About"
 description: "Background, experience, and what I stand for."
 ---
 
-I'm **Paolo Carta**, a freelance Kubernetes consultant and DevOps engineer. I've spent the past several years helping engineering teams move faster without breaking things — designing container infrastructure, automating delivery pipelines, and building the internal tooling that removes toil from developers' daily lives.
+I'm **Paolo Carta**, a freelance Kubernetes consultant, DevOps engineer and Trainer. I've spent the past several years helping engineering teams move faster without breaking things, designing container infrastructure, automating delivery pipelines, and building the internal tooling that removes toil from developers' daily lives. Moreover I trained several teams to use effectively Kubernetes clusters and containers.
 
 I work with startups scaling their first production Kubernetes clusters, and with larger organisations untangling years of manual, fragile infrastructure. In both cases, the goal is the same: reliable systems that teams understand and trust.
 
