@@ -1,6 +1,6 @@
 ---
 title: "Securing Secrets in a GitOps Environment with SOPS"
-date: 2026-07-13
+date: 2025-07-13
 description: "How to use Mozilla SOPS to encrypt, version, and decrypt secrets alongside your Kubernetes manifests in a GitOps workflow, keeping sensitive values safe in Git."
 tags: ["kubernetes", "gitops", "security"]
 author: "Paolo Carta"
